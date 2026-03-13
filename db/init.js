@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════════════════════════════
+   JSON Database System — Robust and zero-dependency
+   ═══════════════════════════════════════════════════════════ */
+
+const fs = require('fs');
+const path = require('path');
+
+class JSONDatabase {
+  constructor(dbPath) {
+    this.dbPath = dbPath;
+    this.data = {
+      contacts: [],
+      newsletter: [],
+      testimonials: [
+        { id: 1, name: 'Rahul Kapoor', role: 'Founder', company: 'TechStartup', avatar_initials: 'RK', avatar_gradient: 'linear-gradient(135deg, #6A5CFF, #A855F7)', rating: 5, content: 'GMS AURA transformed our platform completely. The AI-driven features they integrated saved our team 20 hours a week. Absolutely phenomenal work.', display_order: 1, active: 1 },
+        { id: 2, name: 'Priya Sharma', role: 'CMO', company: 'DesignCo', avatar_initials: 'PS', avatar_gradient: 'linear-gradient(135deg, #EC4899, #A855F7)', rating: 5, content: 'The UI/UX design they delivered for our SaaS product was cinematic quality. Our users love the intuitive flow. Best investment we\'ve ever made.', display_order: 2, active: 1 },
+        { id: 3, name: 'Arjun Mehta', role: 'CEO', company: 'MediaHub', avatar_initials: 'AM', avatar_gradient: 'linear-gradient(135deg, #6366F1, #8B5CF6)', rating: 5, content: 'Working with GMS AURA feels like working with a high-end Silicon Valley team. Fast development, stunning quality, and zero friction. Truly impressive.', display_order: 3, active: 1 }
+      ],
+      blog_posts: [
+        {
+          id: 1,
+          slug: 'ai-driven-design-trends-2026',
+          title: 'AI-Driven Design Trends in 2026',
+          excerpt: 'AI is no longer just a tool — it\'s a design partner. Here\'s how GMS AURA is leading the charge in futuristic interfaces.',
+          content: `<h2>The AI Design Revolution</h2><p>In 2026, generative UI and intelligent layouts are the new standard. GMS AURA is at the forefront of this shift.</p><h3>Key Trends</h3><ul><li>Dynamic layouts that adapt to user behavior</li><li>Predictive UI components</li><li>Seamless integration of LLMs into workflows</li></ul>`,
+          author: 'GMS AURA Team',
+          category: 'AI & Design',
+          read_time: '6 min read',
+          cover_gradient: 'linear-gradient(135deg, #6A5CFF, #A855F7)',
+          published: 1,
+          published_at: new Date().toISOString()
+        }
+      ]
+    };
+    this.init();
+  }
+
+  init() {
+    if (fs.existsSync(this.dbPath)) {
+      try {
+        const fileData = fs.readFileSync(this.dbPath, 'utf8');
+        this.data = JSON.parse(fileData);
+        console.log('  ✓ Database loaded from file');
+      } catch (err) {
+        console.error('Error loading database:', err);
+        this.save();
+      }
+    } else {
+      this.save();
+      console.log('  ✓ Initial database created');
+    }
+  }
+
+  save() {
+    try {
+      fs.writeFileSync(this.dbPath, JSON.stringify(this.data, null, 2), 'utf8');
+    } catch (err) {
+      console.error('Error saving database:', err);
+    }
+  }
+
+  // Helper methods
+  getAll(collection) {
+    return this.data[collection] || [];
+  }
+
+  getOne(collection, filterFn) {
+    return (this.data[collection] || []).find(filterFn);
+  }
+
+  insert(collection, item) {
+    if (!this.data[collection]) this.data[collection] = [];
+    const newItem = {
+      id: Date.now() + Math.floor(Math.random() * 1000),
+      created_at: new Date().toISOString(),
+      ...item
+    };
+    this.data[collection].push(newItem);
+    this.save();
+    return newItem;
+  }
+}
+
+function initDB() {
+  const dbPath = path.join(__dirname, 'database.json');
+  return new JSONDatabase(dbPath);
+}
+
+module.exports = { initDB };

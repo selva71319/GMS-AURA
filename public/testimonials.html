@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonials — GMS AURA</title>
+  <meta name="description" content="What our clients say about GMS AURA's digital solutions and AI innovations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-icon">◆</span>
+        <span class="logo-text">GMS <span class="logo-highlight">AURA</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/services">Services</a></li>
+        <li><a href="/showcase">Showcase</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/testimonials" class="active">Testimonials</a></li>
+        <li><a href="/contact" class="nav-cta">Get Started</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-bg-effects"><div class="hero-orb hero-orb-1"></div><div class="hero-orb hero-orb-2"></div></div>
+    <div class="container">
+      <span class="section-tag reveal-up">Testimonials</span>
+      <h1 class="hero-title reveal-up" style="font-size:clamp(2.2rem,5vw,3.8rem)">Loved by <span class="gradient-text">Founders</span> &<br /><span class="gradient-text-alt">Creators</span></h1>
+      <p class="hero-subtitle reveal-up">Don't take our word for it — hear from the brands we've helped grow.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="trusted-section" style="padding:48px 0 64px">
+    <div class="container">
+      <div class="hero-stats reveal-up" style="justify-content:center">
+        <div class="stat"><span class="stat-number" data-target="50" style="font-size:2.5rem">0</span><span class="stat-plus">+</span><span class="stat-label">Projects</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-number" data-target="100" style="font-size:2.5rem">0</span><span class="stat-plus">%</span><span class="stat-label">Satisfaction</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-number" data-target="5" style="font-size:2.5rem">0</span><span class="stat-plus">.0</span><span class="stat-label">Avg Rating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS GRID (loaded from API) -->
+  <section class="testimonials-page">
+    <div class="container">
+      <div class="testimonials-full-grid" id="testimonialsGrid">
+        <!-- Loaded dynamically from /api/testimonials -->
+        <div class="loading-state">
+          <div class="loading-spinner"></div>
+          <p>Loading testimonials...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-bg-effects"><div class="cta-orb cta-orb-1"></div><div class="cta-orb cta-orb-2"></div></div>
+    <div class="container">
+      <div class="cta-content reveal-up">
+        <h2 class="cta-title">Join Our <span class="gradient-text">Happy Clients</span></h2>
+        <p class="cta-subtitle">Be the next success story. Let's create something extraordinary together.</p>
+        <a href="/contact" class="btn btn-primary btn-large"><span>Start Your Project</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12h14m-7-7 7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="/" class="nav-logo"><span class="logo-icon">◆</span><span class="logo-text">GMS <span class="logo-highlight">AURA</span></span></a><p>Premium AI-Driven Digital Agency.</p></div>
+        <div class="footer-links-col"><h4>Services</h4><ul><li><a href="/services">AI Solutions</a></li><li><a href="/services">Web Development</a></li><li><a href="/services">UI/UX Design</a></li></ul></div>
+        <div class="footer-links-col"><h4>Company</h4><ul><li><a href="/about">About Us</a></li><li><a href="/showcase">Our Work</a></li><li><a href="/blog">Blog</a></li></ul></div>
+        <div class="footer-links-col"><h4>Connect</h4><ul><li><a href="mailto:selva@gmsaura.com">selva@gmsaura.com</a></li><li><a href="/contact">Book a Call</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 GMS AURA. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "gms-aura",
+  "version": "1.0.0",
+  "description": "GMS AURA — Premium AI-Driven Digital Agency",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}

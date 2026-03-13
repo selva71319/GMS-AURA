@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Work — GMS AURA</title>
+  <meta name="description" content="Explore our portfolio of modern digital solutions built by GMS AURA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-icon">◆</span>
+        <span class="logo-text">GMS <span class="logo-highlight">AURA</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/services">Services</a></li>
+        <li><a href="/showcase" class="active">Showcase</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/contact" class="nav-cta">Get Started</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-bg-effects"><div class="hero-orb hero-orb-1"></div><div class="hero-orb hero-orb-2"></div></div>
+    <div class="container">
+      <span class="section-tag reveal-up">Portfolio</span>
+      <h1 class="hero-title reveal-up" style="font-size:clamp(2.2rem,5vw,3.8rem)">Our <span class="gradient-text">Creative</span> Work</h1>
+      <p class="hero-subtitle reveal-up">A curated selection of projects that showcase our range and obsession with quality.</p>
+    </div>
+  </section>
+
+  <!-- FILTER TABS -->
+  <section class="showcase-section">
+    <div class="container">
+      <div class="filter-tabs reveal-up">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="social">Social Media</button>
+        <button class="filter-btn" data-filter="motion">Motion</button>
+        <button class="filter-btn" data-filter="ui">UI/UX</button>
+      </div>
+
+      <div class="showcase-grid" id="showcaseGrid">
+        <div class="showcase-item reveal-up" data-category="video">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#7F5AF0,#4C1D95)">
+            <div class="showcase-play">▶</div>
+          </div>
+          <div class="showcase-info">
+            <h3>TechStartup Product Launch</h3>
+            <p>Cinematic product video with motion graphics</p>
+            <span class="showcase-tag">Video Editing</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="branding" data-delay="100">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#EC4899,#7F5AF0)"></div>
+          <div class="showcase-info">
+            <h3>DesignCo Brand Refresh</h3>
+            <p>Complete identity system & brand guidelines</p>
+            <span class="showcase-tag">Branding</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="social" data-delay="200">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#F59E0B,#EF4444)"></div>
+          <div class="showcase-info">
+            <h3>MediaHub Social Campaign</h3>
+            <p>30-day social media content strategy & design</p>
+            <span class="showcase-tag">Social Media</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="motion" data-delay="0">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#6366F1,#8B5CF6)">
+            <div class="showcase-play">▶</div>
+          </div>
+          <div class="showcase-info">
+            <h3>BrandForge Explainer Video</h3>
+            <p>2-minute animated explainer with voiceover</p>
+            <span class="showcase-tag">Motion Graphics</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="ui" data-delay="100">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#10B981,#6366F1)"></div>
+          <div class="showcase-info">
+            <h3>CreativeX Dashboard</h3>
+            <p>SaaS analytics dashboard redesign</p>
+            <span class="showcase-tag">UI/UX</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="video" data-delay="200">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#A855F7,#EC4899)">
+            <div class="showcase-play">▶</div>
+          </div>
+          <div class="showcase-info">
+            <h3>StyleHive Fashion Reel</h3>
+            <p>Instagram Reels series — 15-second format</p>
+            <span class="showcase-tag">Video</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="branding" data-delay="0">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#0EA5E9,#7F5AF0)"></div>
+          <div class="showcase-info">
+            <h3>FinTech Pro Identity</h3>
+            <p>Logo, color system, and brand playbook</p>
+            <span class="showcase-tag">Branding</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="social" data-delay="100">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#F472B6,#A855F7)"></div>
+          <div class="showcase-info">
+            <h3>FoodieApp Launch Campaign</h3>
+            <p>Cross-platform ad creatives for app launch</p>
+            <span class="showcase-tag">Social Media</span>
+          </div>
+        </div>
+        <div class="showcase-item reveal-up" data-category="motion" data-delay="200">
+          <div class="showcase-thumb" style="background:linear-gradient(135deg,#FBBF24,#F59E0B)">
+            <div class="showcase-play">▶</div>
+          </div>
+          <div class="showcase-info">
+            <h3>E-Commerce Product Animation</h3>
+            <p>3D product reveal with kinetic typography</p>
+            <span class="showcase-tag">Motion Graphics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-bg-effects"><div class="cta-orb cta-orb-1"></div><div class="cta-orb cta-orb-2"></div></div>
+    <div class="container">
+      <div class="cta-content reveal-up">
+        <h2 class="cta-title">Want Results Like These?<br /><span class="gradient-text">Let's Create Yours</span></h2>
+        <p class="cta-subtitle">Every project starts with a conversation. Tell us your vision and we'll make it unforgettable.</p>
+        <a href="/contact" class="btn btn-primary btn-large"><span>Start Your Project</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12h14m-7-7 7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="/" class="nav-logo"><span class="logo-icon">◆</span><span class="logo-text">GMS <span class="logo-highlight">AURA</span></span></a><p>Premium AI-Driven Digital Agency.</p></div>
+        <div class="footer-links-col"><h4>Services</h4><ul><li><a href="/services">AI Solutions</a></li><li><a href="/services">Web Development</a></li><li><a href="/services">UI/UX Design</a></li></ul></div>
+        <div class="footer-links-col"><h4>Company</h4><ul><li><a href="/about">About Us</a></li><li><a href="/showcase">Our Work</a></li><li><a href="/blog">Blog</a></li></ul></div>
+        <div class="footer-links-col"><h4>Connect</h4><ul><li><a href="mailto:selva@gmsaura.com">selva@gmsaura.com</a></li><li><a href="/contact">Book a Call</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 GMS AURA. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>
