@@ -2,12 +2,21 @@
    GMS AURA — Premium AI-Driven Digital Agency @2026
    ═══════════════════════════════════════════════════════════ */
 
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { Resend } = require('resend');
+const { createClient } = require('@supabase/supabase-js');
 const { initDB } = require('./db/init');
 
 const app = express();
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+
+// Initialize Supabase (Optional)
+const supabase = (process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) 
+  ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY) 
+  : null;
 const PORT = process.env.PORT || 3000;
 
 // ─── Middleware ───
@@ -24,7 +33,7 @@ const db = initDB();
 // ═══════════════════════ API ROUTES ═══════════════════════
 
 // ── Contact Form Submission ──
-app.post('/api/contact', (req, res) => {
+app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, phone, service, budget, message } = req.body;
 
@@ -32,7 +41,33 @@ app.post('/api/contact', (req, res) => {
       return res.status(400).json({ success: false, error: 'Name, email, and message are required.' });
     }
 
-    const newItem = db.insert('contacts', { name, email, phone, service, budget, message, status: 'new' });
+    // 1. Save to local JSON DB
+    const newItem = db.insert('contacts', { name, email, phone, service, budget, message, status: 'new', created_at: new Date().toISOString() });
+
+    // 2. Sync to Supabase (if configured)
+    if (supabase) {
+      await supabase.from('contacts').insert([{ name, email, phone, service, budget, message }]);
+    }
+
+    // 3. Send Email Notification via Resend
+    if (resend) {
+      const ownerEmail = process.env.NOTIFICATION_EMAIL || 'selva@gmsaura.com';
+      await resend.emails.send({
+        from: 'GMS AURA <onboarding@resend.dev>',
+        to: ownerEmail,
+        subject: `New Lead: ${name} - ${service}`,
+        html: `
+          <h3>New Contact Form Submission</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+          <p><strong>Service:</strong> ${service}</p>
+          <p><strong>Budget:</strong> ${budget || 'N/A'}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `
+      });
+    }
 
     res.json({
       success: true,
@@ -41,12 +76,12 @@ app.post('/api/contact', (req, res) => {
     });
   } catch (err) {
     console.error('Contact error:', err);
-    res.status(500).json({ success: false, error: 'Server error.' });
+    res.status(500).json({ success: false, error: 'Server error. Please try again later.' });
   }
 });
 
 // ── Newsletter Subscription ──
-app.post('/api/newsletter', (req, res) => {
+app.post('/api/newsletter', async (req, res) => {
   try {
     const { email } = req.body;
     if (!email) return res.status(400).json({ success: false, error: 'Email is required.' });
@@ -54,9 +89,17 @@ app.post('/api/newsletter', (req, res) => {
     const existing = db.getOne('newsletter', n => n.email === email);
     if (existing) return res.json({ success: true, message: 'Already subscribed!' });
 
-    db.insert('newsletter', { email });
+    // 1. Local DB
+    db.insert('newsletter', { email, subscribed_at: new Date().toISOString() });
+
+    // 2. Supabase Sync
+    if (supabase) {
+      await supabase.from('newsletter').insert([{ email }]);
+    }
+
     res.json({ success: true, message: 'Welcome! You\'re subscribed.' });
   } catch (err) {
+    console.error('Newsletter error:', err);
     res.status(500).json({ success: false, error: 'Server error.' });
   }
 });
